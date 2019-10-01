@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import Head from 'next/head'
+import React, { Component, Fragment } from 'react';
+import Head from 'next/head';
+// import fetch from 'isomorphic-unfetch';
 // import Nav from '../components/nav'
 
 class Home extends Component {
@@ -13,7 +14,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Head>
           <title>Home</title>
           <link rel='icon' href='/static/favicon.ico' importance='low' />
@@ -93,7 +94,7 @@ class Home extends Component {
         color: #333;
       }
     `}</style>
-      </div>
+      </Fragment>
     );
   }
 }
