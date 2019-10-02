@@ -8,7 +8,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prencet: '20',
+      prencet: '50',
       precentColor: ''
     };
   }
@@ -32,7 +32,7 @@ class Home extends Component {
         <Head>
           <title>Home</title>
           <link rel='icon' href='/static/favicon.ico' importance='low' />
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
         </Head>
         {/* <Nav /> */}
 
