@@ -7,11 +7,25 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      prencet: '20',
+      precentColor: ''
+    };
   }
   UNSAFE_componentWillMount() {
+    this.setState({
+      precentColor: this.precentColor()
+    });
     console.log("hello willmount");
   }
-
+  precentColor() {
+    if (this.state.prencet < '30')
+      return 'text-danger';
+    else if (this.state.prencet >= '30' && this.state.prencet < '50')
+      return 'text-warning';
+    else
+      return 'text-success';
+  }
   render() {
     return (
       <Fragment>
@@ -22,14 +36,23 @@ class Home extends Component {
         </Head>
         {/* <Nav /> */}
 
-        <div className='hero'>
-          <h1 className='title'>Welcome to Next.js!</h1>
-          <p className='description'>
-            To get started, edit <code>pages/index.js</code> and save to reload.
+        <div className='hero container' >
+          <div className="row">
+            <h1 className='title'>Welcome to Next.js!</h1>
+            <p className='description'>
+              To get started, edit <code>pages/index.js</code> and save to reload.
       </p>
-          <div className="container">
-            <div className='row'>
-              <a href='https://nextjs.org/docs' className='card'>
+          </div>
+          <div className='row block py-2'>
+            <div className='col-4'>
+              <img width="320px" src='/static/MyKad.jpg' />
+            </div>
+            <div className='col-4 text-center'>
+
+              <img className='circle' src='/static/omar_test.jpg' />
+            </div>
+            <div className={`col-4 text-center num blink ${this.state.precentColor}`}>{this.state.prencet}%</div>
+            {/* <a href='https://nextjs.org/docs' className='card'>
                 <h3>Documentation &rarr;</h3>
                 <p>Learn more about Next.js in the documentation.</p>
               </a>
@@ -43,20 +66,27 @@ class Home extends Component {
               >
                 <h3>Examples &rarr;</h3>
                 <p>Find other example boilerplates on the Next.js GitHub.</p>
-              </a>
-            </div>
+              </a> */}
+
           </div>
         </div>
 
         <style jsx>{`
+   
       .hero {
         width: 100%;
         color: #333;
+        background-image="./static/wallpaper.jpg"
+      }
+      
+      .circle {
+        border-radius: 50%;
+        width: 200px
       }
       .title {
         margin: 0;
         width: 100%;
-        padding-top: 80px;
+        padding-top: 30px;
         line-height: 1.15;
         font-size: 48px;
       }
@@ -65,11 +95,27 @@ class Home extends Component {
         text-align: center;
       }
       .row {
-        max-width: 880px;
+      
         margin: 80px auto 40px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+      }
+      .num {
+        font-size: 130px;
+      }
+      .green-num-color {
+        color: green;
+      }
+      .yellow-num-color {
+        color: yellow;
+      }
+      .red-num-color {
+        color: red;
+      }
+      .block {
+        color: #434343;
+        border: 1px solid #9b9b9b;
       }
       .card {
         padding: 18px 18px 24px;
@@ -92,6 +138,20 @@ class Home extends Component {
         padding: 12px 0 0;
         font-size: 13px;
         color: #333;
+      }
+      .blink {
+        animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+      }
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+      @-webkit-keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
       }
     `}</style>
       </Fragment>
