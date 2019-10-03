@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
+// import "../scss/styles.scss";
 // import fetch from 'isomorphic-unfetch';
 // import Nav from '../components/nav'
 
@@ -8,31 +9,47 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prencet: '50',
-      precentColor: ''
+      postcode: 'postcode',
+      timestamp: '1570073289026',
+      idImgUrl: "idImgUrl",
+      idNumber: "idNumber",
+      address: "address",
+      faceImgUrl: "faceImgUrl",
+      id: "1570073289026",
+      isMatch: false,
+      channel: "7",
+      matchPercentage: '3.3',
+      Name: "name",
+
+      percentageColor: ''
+
     };
   }
   UNSAFE_componentWillMount() {
     this.setState({
-      precentColor: this.precentColor()
+      percentageColor: this.setPrecentageColor()
     });
     console.log("hello willmount");
   }
-  precentColor() {
-    if (this.state.prencet < '30')
-      return 'text-danger';
-    else if (this.state.prencet >= '30' && this.state.prencet < '50')
+  setPrecentageColor() {
+    if (this.state.matchPercentage < 30)
+      return 'text-danger blink';
+    else if (this.state.matchPercentage >= 30 && this.state.matchPercentage < 50)
       return 'text-warning';
     else
       return 'text-success';
   }
   render() {
+    const { matchPercentage, percentageColor, isMatch } = this.state;
+    const displayMatch = isMatch ? "Matches" : "Doesn't Match";
+    console.log("")
     return (
       <Fragment>
         <Head>
           <title>Home</title>
           <link rel='icon' href='/static/favicon.ico' importance='low' />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
+          <link rel="stylesheet" href="/static/style.css" />
         </Head>
         {/* <Nav /> */}
 
@@ -51,7 +68,14 @@ class Home extends Component {
 
               <img className='circle' src='/static/omar_test.jpg' />
             </div>
-            <div className={`col-4 text-center num blink ${this.state.precentColor}`}>{this.state.prencet}%</div>
+            <div className={`col-4 text-center`}>
+              <div className={`match pb-5 pt-2 ${percentageColor}`}>
+                <u>{displayMatch}</u>
+              </div>
+              <div className={`num ${percentageColor}`}>
+                {matchPercentage}%
+              </div>
+            </div>
             {/* <a href='https://nextjs.org/docs' className='card'>
                 <h3>Documentation &rarr;</h3>
                 <p>Learn more about Next.js in the documentation.</p>
@@ -70,90 +94,6 @@ class Home extends Component {
 
           </div>
         </div>
-
-        <style jsx>{`
-   
-      .hero {
-        width: 100%;
-        color: #333;
-        background-image="./static/wallpaper.jpg"
-      }
-      
-      .circle {
-        border-radius: 50%;
-        width: 200px
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 30px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-      
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .num {
-        font-size: 130px;
-      }
-      .green-num-color {
-        color: green;
-      }
-      .yellow-num-color {
-        color: yellow;
-      }
-      .red-num-color {
-        color: red;
-      }
-      .block {
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-      .blink {
-        animation: blink-animation 1s steps(5, start) infinite;
-        -webkit-animation: blink-animation 1s steps(5, start) infinite;
-      }
-      @keyframes blink-animation {
-        to {
-          visibility: hidden;
-        }
-      }
-      @-webkit-keyframes blink-animation {
-        to {
-          visibility: hidden;
-        }
-      }
-    `}</style>
       </Fragment>
     );
   }

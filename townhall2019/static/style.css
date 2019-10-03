@@ -1,0 +1,86 @@
+.hero {
+    width: 100%;
+    color: #333;
+  }
+  
+  .circle {
+    border-radius: 50%;
+    width: 200px
+  }
+  .title {
+    margin: 0;
+    width: 100%;
+    padding-top: 30px;
+    line-height: 1.15;
+    font-size: 48px;
+  }
+  .title,
+  .description {
+    text-align: center;
+  }
+  .row {
+  
+    margin: 80px auto 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .num {
+     
+      line-height: 34px;
+      /* height: 35px; */
+    font-size: 130px;
+  }
+  .green-num-color {
+    color: green;
+  }
+  .yellow-num-color {
+    color: yellow;
+  }
+  .red-num-color {
+    color: red;
+  }
+  .block {
+    color: #434343;
+    border: 1px solid #9b9b9b;
+  }
+  .card {
+    padding: 18px 18px 24px;
+    width: 220px;
+    text-align: left;
+    text-decoration: none;
+    color: #434343;
+    border: 1px solid #9b9b9b;
+  }
+  .card:hover {
+    border-color: #067df7;
+  }
+  .card h3 {
+    margin: 0;
+    color: #067df7;
+    font-size: 18px;
+  }
+  .card p {
+    margin: 0;
+    padding: 12px 0 0;
+    font-size: 13px;
+    color: #333;
+  }
+  .match {
+    font-size: 20px;
+    display: block;
+  }
+  .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
