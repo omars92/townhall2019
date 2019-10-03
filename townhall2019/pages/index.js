@@ -21,9 +21,9 @@ class Home extends Component {
 
       faceImgUrl: "faceImgUrl",
       id: "1570073289026",
-      isMatch: true,
+      isMatch: false,
       channel: "7",
-      matchPercentage: '73.3',
+      matchPercentage: '23.3',
       Name: "name",
 
       percentageColor: ''
@@ -62,14 +62,14 @@ class Home extends Component {
         </Head>
 
         <div className='hero container'>
-          <div className="row row-margin">
+          <div className="row row-margin row-style">
             <h1 className='title'>Welcome to Next.js!</h1>
             <p className='description'>
               To get started, edit <code>pages/index.js</code> and save to reload.
       </p>
           </div>
           <div className="block row-margin">
-            <div className='row py-2'>
+            <div className='row py-2 row-style'>
               <div className='col-4'>
                 <img width="320px" src='/static/MyKad.jpg' />
               </div>
@@ -87,10 +87,10 @@ class Home extends Component {
               </div>
             </div>
             <hr className="mb-1" />
-            <div className="row">
+            <div className="row pb-1">
               <div className="col-4" >
                 <div className="row">
-                  <div className="col-2" style={{ fontSize: 19 }}><b>Name:</b></div>
+                  <div className="col-2 ml-1" style={{ fontSize: 19 }}><b>Name:</b></div>
                   <div className="col-9" style={{ fontSize: 19 }}> Omar Abdul Rahman Salim</div>|
                 </div>
               </div>
@@ -108,11 +108,11 @@ class Home extends Component {
               </div>
             </div>
 
-            <hr className="mb-1" />
+            <hr className="mb-1 mt-1" />
             <div className="row mb-2">
               <div className="col-8" >
                 <div className="row">
-                  <div className="col-1 mr-2" style={{ fontSize: 19 }}><b>Address:</b></div>
+                  <div className="col-1 mr-3 ml-1" style={{ fontSize: 19 }}><b>Address:</b></div>
                   <div className="col-10" style={{ fontSize: 19 }}>Pacific 63, Jalan 13/6, Section 13, 46200 Petaling Jaya, Selangor</div> |
                 </div>
               </div>

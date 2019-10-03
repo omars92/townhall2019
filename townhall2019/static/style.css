@@ -21,7 +21,7 @@
 .row-margin {
   margin: 80px auto 40px;
 }
-.row {
+.row-style {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
