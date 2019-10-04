@@ -9,80 +9,90 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      postcode: 'postcode',
-      // timestamp: 1570073289026,
-      timestamp: 1570162356843,
-      idImgUrl: "idImgUrl",
-      idNumber: "idNumber",
-
-      address: "address",
-
-      faceImgUrl: "faceImgUrl",
-      id: "1570073289026",
-      isMatch: true,
-      channel: "7",
-      matchPercentage: '100',
-      Name: "name",
-
+      postcode: '',
+      timestamp: '',
+      idImgUrl: '#',
+      idNumber: '',
+      address: '',
+      faceImgUrl: '#',
+      id: '',
+      isMatch: '',
+      channel: '',
+      matchPercentage: '',
+      Name: '',
       percentageColor: ''
-
     };
   }
-  setPrecentageColor = () => {
-    if (this.state.matchPercentage < 30)
+  setPrecentageColor = (matchPercentage) => {
+    if (matchPercentage < 30)
       return 'text-danger blink';
-    else if (this.state.matchPercentage >= 30 && this.state.matchPercentage < 50)
+    else if (matchPercentage >= 30 && matchPercentage < 50)
       return 'text-warning';
     else
       return 'text-success';
   }
   convertYYYYMMDDHHmmssDate = (dtStr, dateFormat = 'DD MMM HH:mm') => {
-    return dtStr ? moment(moment.unix(dtStr).format(), 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
+    console.log("dtStr: ", dtStr);
+    return dtStr ? moment(moment.unix(dtStr), 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
     // return dtStr ? moment(dtStr, 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
   };
 
-  async UNSAFE_componentWillMount() {
-    // await this.callApi();
+  // async UNSAFE_componentWillMount() {
+  //   const {customerInfo}  = this.props
+  //   this.setState({
+  //     postcode: customerInfo[0].postcode,
+  //     timestamp: customerInfo[0].timestamp,
+  //     idImgUrl: customerInfo[0].idImgUrl,
+  //     idNumber: customerInfo[0].idNumber,
+  //     address: customerInfo[0].address,
+  //     faceImgUrl: customerInfo[0].faceImgUrl,
+  //     id: customerInfo[0].id,
+  //     isMatch: customerInfo[0].isMatch,
+  //     channel: customerInfo[0].channel,
+  //     matchPercentage,
+  //     Name: customerInfo[0].Name,
+  //     percentageColor: this.setPrecentageColor(matchPercentage)
+  //   });
+  // }
 
-    this.setState({
-      percentageColor: this.setPrecentageColor()
-    });
-    // const aa = await this.ss();
-    // await console.log("aa:: ", this.props.images[0]);
-    // const name = aa && aa.length ? aa[0].Name : null;
-    
-    // this.setState({
-      // Name: name
-    // });
-    console.log("hello willmount");
-  }
-
-  static async getInitialProps() { 
-    // var proxyUrl = 'http://cors-anywhere.herokuapp.com/';
-    var URL = 'https://2b7wnyovxk.execute-api.ap-southeast-1.amazonaws.com/default/robotGet';
-    const res = await fetch( URL)
-    const images = await res.json();
-    // console.log("images:: ", images);
-    return  { images };
-  }
+  // static async getInitialProps() { 
+  //   // var proxyUrl = 'http://cors-anywhere.herokuapp.com/';
+  //   var URL = 'https://2b7wnyovxk.execute-api.ap-southeast-1.amazonaws.com/default/robotGet';
+  //   const res = await fetch( URL)
+  //   const customerInfo = await res.json();
+  //   // console.log("images:: ", images);
+  //   return  { customerInfo };
+  // }
 
   async ss() {
     var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     var URL = 'https://2b7wnyovxk.execute-api.ap-southeast-1.amazonaws.com/default/robotGet';
     const res = await fetch(proxyUrl + URL)
-    const images = await res.json();
-    console.log("images22:: ", images[0]);
+    const customerInfo = await res.json();
+    console.log("images22:: ", customerInfo[0]);
+    const matchPercentage = customerInfo[0].matchPercentage;
     this.setState({
-      Name: images[0].Name
+      postcode: customerInfo[0].postcode,
+      timestamp: customerInfo[0].timestamp,
+      idImgUrl: customerInfo[0].idImgUrl,
+      idNumber: customerInfo[0].idNumber,
+      address: customerInfo[0].address,
+      faceImgUrl: customerInfo[0].faceImgUrl,
+      id: customerInfo[0].id,
+      isMatch: customerInfo[0].isMatch,
+      channel: customerInfo[0].channel,
+      matchPercentage,
+      Name: customerInfo[0].Name,
+      percentageColor: this.setPrecentageColor(matchPercentage)
     });
-    // return  { images };
+
   }
 
   render() {
-    const { matchPercentage, percentageColor, isMatch, id, timestamp, Name } = this.state;
+    const { matchPercentage, percentageColor, isMatch, id, timestamp, Name, postcode, address, idImgUrl, faceImgUrl } = this.state;
     const displayMatch = isMatch ? "Matches" : "Doesn't Match";
     // this.ss();
-    setTimeout(function(){ this.ss() }.bind(this), 3000);
+    setTimeout(function () { this.ss() }.bind(this), 10);
     console.log("moment.unix() :", moment.unix(timestamp).format());
 
     return (
@@ -104,11 +114,13 @@ class Home extends Component {
           <div className="block row-margin">
             <div className='row py-2 row-style'>
               <div className='col-4'>
-                <img width="320px" src='/static/MyKad.jpg' />
+                {/* <img width="320px" src='/static/MyKad.jpg' /> */}
+                <img width="320px" src={idImgUrl} />
               </div>
               <div className='col-4 text-center'>
 
-                <img className='circle' src='/static/omar_test.jpg' />
+                {/* <img className='circle' src='/static/omar_test.jpg' /> */}
+                <img className='circle' src={faceImgUrl} />
               </div>
               <div className={`col-4 text-center`}>
                 <div className={`match pb-5 pt-2 ${percentageColor}`}>
@@ -136,7 +148,7 @@ class Home extends Component {
               <div className="col-4">
                 <div className="row">
                   <div className="col-3 " ><b>Time:</b></div>
-                  <div className="col-9 " > {this.convertYYYYMMDDHHmmssDate(timestamp + '')}</div>
+                  <div className="col-9 " > {this.convertYYYYMMDDHHmmssDate(timestamp)}</div>
                 </div>
               </div>
             </div>
@@ -146,13 +158,13 @@ class Home extends Component {
               <div className="col-8" >
                 <div className="row">
                   <div className="col-1 mr-3 ml-1 "><b>Address:</b></div>
-                  <div className="col-10 ">Pacific 63, Jalan 13/6, Section 13, 46200 Petaling Jaya, Selangor</div> |
+                  <div className="col-10 ">{address}</div> |
                 </div>
               </div>
               <div className="col-4">
                 <div className="row ">
                   <div className="col-3" ><b> Postcode: </b></div>
-                  <div className="col-9">46200</div>
+                  <div className="col-9">{postcode}</div>
                 </div>
               </div>
             </div>
