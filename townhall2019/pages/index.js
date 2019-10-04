@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import moment from 'moment';
-// import "../scss/styles.scss";
-// import fetch from 'isomorphic-unfetch';
+import fetch from 'isomorphic-unfetch';
 // import Nav from '../components/nav'
 
 class Home extends Component {
@@ -11,9 +10,8 @@ class Home extends Component {
     super(props);
     this.state = {
       postcode: 'postcode',
-
       // timestamp: 1570073289026,
-      timestamp: 20180916062330,
+      timestamp: 1570162356843,
       idImgUrl: "idImgUrl",
       idNumber: "idNumber",
 
@@ -30,12 +28,6 @@ class Home extends Component {
 
     };
   }
-  UNSAFE_componentWillMount() {
-    this.setState({
-      percentageColor: this.setPrecentageColor()
-    });
-    console.log("hello willmount");
-  }
   setPrecentageColor = () => {
     if (this.state.matchPercentage < 30)
       return 'text-danger blink';
@@ -44,14 +36,55 @@ class Home extends Component {
     else
       return 'text-success';
   }
-  convertYYYYMMDDHHmmssDate = (dtStr, dateFormat = 'DD MMM YYYY HH:mm') => {
-    // return dtStr ? moment(moment.unix(dtStr).format(), 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
-    return dtStr ? moment(dtStr, 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
+  convertYYYYMMDDHHmmssDate = (dtStr, dateFormat = 'DD MMM HH:mm') => {
+    return dtStr ? moment(moment.unix(dtStr).format(), 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
+    // return dtStr ? moment(dtStr, 'YYYYMMDDHHmmss', false).format(dateFormat) : '';
   };
+
+  async UNSAFE_componentWillMount() {
+    // await this.callApi();
+
+    this.setState({
+      percentageColor: this.setPrecentageColor()
+    });
+    // const aa = await this.ss();
+    // await console.log("aa:: ", this.props.images[0]);
+    // const name = aa && aa.length ? aa[0].Name : null;
+    
+    // this.setState({
+      // Name: name
+    // });
+    console.log("hello willmount");
+  }
+
+  static async getInitialProps() { 
+    // var proxyUrl = 'http://cors-anywhere.herokuapp.com/';
+    var URL = 'https://2b7wnyovxk.execute-api.ap-southeast-1.amazonaws.com/default/robotGet';
+    const res = await fetch( URL)
+    const images = await res.json();
+    // console.log("images:: ", images);
+    return  { images };
+  }
+
+  async ss() {
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    var URL = 'https://2b7wnyovxk.execute-api.ap-southeast-1.amazonaws.com/default/robotGet';
+    const res = await fetch(proxyUrl + URL)
+    const images = await res.json();
+    console.log("images22:: ", images[0]);
+    this.setState({
+      Name: images[0].Name
+    });
+    // return  { images };
+  }
+
   render() {
-    const { matchPercentage, percentageColor, isMatch, id, timestamp } = this.state;
+    const { matchPercentage, percentageColor, isMatch, id, timestamp, Name } = this.state;
     const displayMatch = isMatch ? "Matches" : "Doesn't Match";
+    // this.ss();
+    setTimeout(function(){ this.ss() }.bind(this), 3000);
     console.log("moment.unix() :", moment.unix(timestamp).format());
+
     return (
       <Fragment>
         <Head>
@@ -91,7 +124,7 @@ class Home extends Component {
               <div className="col-4" >
                 <div className="row">
                   <div className="col-2 ml-1" style={{ fontSize: 19 }}><b>Name:</b></div>
-                  <div className="col-9" style={{ fontSize: 19 }}> Omar Abdul Rahman Salim</div>|
+                  <div className="col-9" style={{ fontSize: 19 }}> {Name}</div>|
                 </div>
               </div>
               <div className="col-4">
