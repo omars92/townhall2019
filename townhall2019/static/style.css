@@ -18,6 +18,9 @@
 .description {
   text-align: center;
 }
+.fs-19 {
+  font-size: 19px;
+}
 .row-margin {
   margin: 80px auto 40px;
 }

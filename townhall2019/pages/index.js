@@ -21,9 +21,9 @@ class Home extends Component {
 
       faceImgUrl: "faceImgUrl",
       id: "1570073289026",
-      isMatch: false,
+      isMatch: true,
       channel: "7",
-      matchPercentage: '23.3',
+      matchPercentage: '100',
       Name: "name",
 
       percentageColor: ''
@@ -51,7 +51,7 @@ class Home extends Component {
   render() {
     const { matchPercentage, percentageColor, isMatch, id, timestamp } = this.state;
     const displayMatch = isMatch ? "Matches" : "Doesn't Match";
-    console.log("moment.unix() :" , moment.unix(timestamp).format() );
+    console.log("moment.unix() :", moment.unix(timestamp).format());
     return (
       <Fragment>
         <Head>
@@ -87,7 +87,7 @@ class Home extends Component {
               </div>
             </div>
             <hr className="mb-1" />
-            <div className="row pb-1">
+            <div className="row pb-1 fs-19">
               <div className="col-4" >
                 <div className="row">
                   <div className="col-2 ml-1" style={{ fontSize: 19 }}><b>Name:</b></div>
@@ -96,34 +96,34 @@ class Home extends Component {
               </div>
               <div className="col-4">
                 <div className="row">
-                  <div className="col-2 text-center" style={{ fontSize: 19 }}><b> IC: </b></div>
-                  <div className="col-9" style={{ fontSize: 19 }}> {id}</div>|
+                  <div className="col-2 text-center "><b> IC: </b></div>
+                  <div className="col-9 " > {id}</div>|
                 </div>
               </div>
               <div className="col-4">
                 <div className="row">
-                  <div className="col-3" style={{ fontSize: 19 }}><b>Time:</b></div>
-                  <div className="col-9" style={{ fontSize: 19 }}> {this.convertYYYYMMDDHHmmssDate(timestamp + '' )}</div>
+                  <div className="col-3 " ><b>Time:</b></div>
+                  <div className="col-9 " > {this.convertYYYYMMDDHHmmssDate(timestamp + '')}</div>
                 </div>
               </div>
             </div>
 
             <hr className="mb-1 mt-1" />
-            <div className="row mb-2">
+            <div className="row mb-2 fs-19">
               <div className="col-8" >
                 <div className="row">
-                  <div className="col-1 mr-3 ml-1" style={{ fontSize: 19 }}><b>Address:</b></div>
-                  <div className="col-10" style={{ fontSize: 19 }}>Pacific 63, Jalan 13/6, Section 13, 46200 Petaling Jaya, Selangor</div> |
+                  <div className="col-1 mr-3 ml-1 "><b>Address:</b></div>
+                  <div className="col-10 ">Pacific 63, Jalan 13/6, Section 13, 46200 Petaling Jaya, Selangor</div> |
                 </div>
               </div>
               <div className="col-4">
-                <div className="row">
-                  <div className="col-3" style={{ fontSize: 19 }}><b> Postcode: </b></div>
-                  <div className="col-9" style={{ fontSize: 19 }}>46200</div>
+                <div className="row ">
+                  <div className="col-3" ><b> Postcode: </b></div>
+                  <div className="col-9">46200</div>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
         {/* <a href='https://nextjs.org/docs' className='card'>
