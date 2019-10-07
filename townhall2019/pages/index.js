@@ -83,7 +83,7 @@ class Home extends Component {
     return (
       <Fragment>
         <Head>
-          <title>Home</title>
+          <title>Identity Robot</title>
           <link rel='icon' href='/static/favicon.ico' importance='low' />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
           <link rel="stylesheet" href="/static/style.css" />
