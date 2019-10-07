@@ -83,7 +83,7 @@ class Home extends Component {
     return (
       <Fragment>
         <Head>
-          <title>Identity Robot</title>
+          <title>Activte</title>
           <link rel='icon' href='/static/favicon.ico' importance='low' />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
           <link rel="stylesheet" href="/static/style.css" />
@@ -91,10 +91,11 @@ class Home extends Component {
 
         <div className='hero container'>
           <div className="row row-margin row-style">
-            <h1 className='title'>Welcome to Identity Robot!</h1>
+            <h1 className='title'>ACTIVATE</h1>
             <p className='description'>
               {/* To get started, edit <code>pages/index.js</code> and save to reload. */}
-              Please <code>scan your IC and face the camera</code> to get access!
+              {/* Please <code>scan your IC and face the camera</code> to get access! */}
+              Please pick up a SIM pack and place it along with your IC in the placeholders
       </p>
           </div>
           <div className="block row-margin">
