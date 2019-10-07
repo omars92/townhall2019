@@ -94,7 +94,7 @@ class Home extends Component {
             <h1 className='title'>Welcome to Identity Robot!</h1>
             <p className='description'>
               {/* To get started, edit <code>pages/index.js</code> and save to reload. */}
-              Just <code>scan your IC and face the camera</code> to get access!
+              Please <code>scan your IC and face the camera</code> to get access!
       </p>
           </div>
           <div className="block row-margin">
